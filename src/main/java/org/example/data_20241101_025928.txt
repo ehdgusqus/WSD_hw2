@@ -1,0 +1,5 @@
+id=1 [name=Laptop, description='Gaming laptop', price=1500, quantity_level=3, category=Electronics, createDate=2024-11-01 02:58:44]
+id=2 [name=Coffee Maker, description='Espresso machine', price=200, quantity_level=2, category=Kitchen, createDate=2024-11-01 02:58:44]
+id=3 [name=Smartphone, description='Latest model', price=999, quantity_level=2, category=Electronics, createDate=2024-11-01 02:58:44]
+id=4 [name=chicken, description='Fried', price=20, quantity_level=2, category=food, createDate=2024-11-01 02:58:44]
+id=6 [name=airpods, description='Wireless', price=450, quantity_level=3, category=Electronics, createDate=2024-11-01 02:59:28]
