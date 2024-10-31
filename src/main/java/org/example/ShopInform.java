@@ -1,8 +1,5 @@
 package org.example;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class ShopInform {
     private int id;
     private String name;
@@ -12,14 +9,18 @@ public class ShopInform {
     private String category;
     private String createDate;
 
-    public ShopInform(int id, String name, String description, int price, int quantity, String category) {
-        this.id = id;
+    public ShopInform( String name, String description, int price, int quantity, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
-        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); // 현재 시간 자동 생성
+    }
+
+    public ShopInform(int id, String name, String description, int price, int quantity, String category) {
+    }
+
+    public ShopInform(int id, String name, String description, int price, int quantity, String category, String createDate) {
     }
 
     public int getId() {
@@ -80,14 +81,14 @@ public class ShopInform {
 
     @Override
     public String toString() {
-        return "ShopInform[" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+        return "id=" + id +
+                " [" +
+                "name=" + name +
+                ", description='" + description  + '\'' +
                 ", price=" + price +
-                ", quantity=" + quantity +
+                ", quantity_level=" + quantity +
                 ", category='" + category + '\'' +
-                ", createDate='" + createDate + '\'' +
+                ", createDate=" + createDate + '\'' +
                 ']';
     }
 }
