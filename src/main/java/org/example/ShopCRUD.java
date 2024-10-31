@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ShopCRUD implements ICRUD {
@@ -32,10 +33,11 @@ public class ShopCRUD implements ICRUD {
         if (item != null) {
             shopList.remove(item);
             System.out.println("삭제 완료");
+            return true;
         } else {
             System.out.println("해당 아이디의 제품을 찾을 수 없습니다.");
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -47,7 +49,14 @@ public class ShopCRUD implements ICRUD {
 
     @Override
     public void listPrice(ArrayList<ShopInform> shopList) {
-        // 가격 별로 나눠서 출력
+        System.out.println("Items sorted by price:");
+
+        DBUtil dbUtil = new DBUtil();
+        ArrayList<ShopInform> sortedItems = dbUtil.loadItemsSortedByPrice();
+
+        for (ShopInform item : sortedItems) {
+            System.out.println(item); // 정렬된 항목 출력
+        }
     }
 
     @Override
@@ -77,18 +86,40 @@ public class ShopCRUD implements ICRUD {
     }
 
     // ShopInform 객체 생성 메서드
-    private ShopInform printShop() {
+    ShopInform printShop() {
         System.out.print("상품명: ");
         String name = scanner.next();
 
         System.out.print("상세정보: ");
         String description = scanner.next();
 
-        System.out.print("가격: ");
-        int price = scanner.nextInt();
+        scanner.nextLine();
 
-        System.out.print("품질 (1.나쁨 2.평범 3.좋음): ");
-        int quantity = scanner.nextInt();
+        int price = 0;
+        while (true) {
+            System.out.print("가격: ");
+            try {
+                price = scanner.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("숫자를 입력해주세요.");
+                scanner.next();
+            }
+        }
+
+        int quantity = 0;
+        while (true) {
+            System.out.print("품질 (1.나쁨 2.평범 3.좋음): ");
+            try {
+                quantity = scanner.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("숫자를 입력해주세요.");
+                scanner.next();
+            }
+        }
+
+        scanner.nextLine();
 
         System.out.print("카테고리: ");
         String category = scanner.next();
