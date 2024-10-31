@@ -50,12 +50,17 @@ public class ShopCRUD implements ICRUD {
 
     @Override
     public void search(ArrayList<ShopInform> shopList) {
+        int check = 0;
         System.out.print("검색할 상품명: ");
         String name = scanner.next();
         for (ShopInform item : shopList) {
             if (item.getName().equalsIgnoreCase(name)) {
+                check = 1;
                 System.out.println(item);
             }
+        }
+        if (check == 0) {
+            System.out.println("해당 상품이 존재하지 않습니다.");
         }
     }
 
@@ -83,12 +88,12 @@ public class ShopCRUD implements ICRUD {
         System.out.print("가격: ");
         int price = scanner.nextInt();
 
-        System.out.print("날짜: ");
-        String date = scanner.next();
+        System.out.print("품질 (1:좋음 2:평범 3:나쁨): ");
+        int quantity = scanner.nextInt();
 
-        System.out.print("품질: ");
-        String quantity = scanner.next();
+        System.out.print("카테고리: ");
+        String category = scanner.next();
 
-        return new ShopInform(id, name, description, price, date, quantity);
+        return new ShopInform(id, name, description, price, quantity, category);
     }
 }
