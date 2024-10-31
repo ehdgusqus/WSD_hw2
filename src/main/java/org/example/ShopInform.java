@@ -1,20 +1,25 @@
 package org.example;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ShopInform {
     private int id;
     private String name;
     private String description;
     private int price;
-    private String create_date;
-    private String quality;
+    private int quantity;
+    private String category;
+    private String createDate;
 
-    public ShopInform(int id, String name, String description, int price, String create_date, String quality) {
+    public ShopInform(int id, String name, String description, int price, int quantity, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.create_date = create_date;
-        this.quality = quality;
+        this.quantity = quantity;
+        this.category = category;
+        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); // 현재 시간 자동 생성
     }
 
     public int getId() {
@@ -49,31 +54,40 @@ public class ShopInform {
         this.price = price;
     }
 
-    public String getCreate_date() {
-        return create_date;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setCreate_date(String create_date) {
-        this.create_date = create_date;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getQuality() {
-        return quality;
+    public String getCategory() {
+        return category;
     }
 
-    public void setQuality(String quality) {
-        this.quality = quality;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     @Override
     public String toString() {
-        return "ShoppingList{" +
+        return "ShopInform[" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", create_date='" + create_date + '\'' +
-                ", quality='" + quality + '\'' +
-                '}';
+                ", quantity=" + quantity +
+                ", category='" + category + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ']';
     }
 }
