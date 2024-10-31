@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ShopCRUD implements ICURD {
+public class ShopCRUD implements ICRUD {
     Scanner scanner = new Scanner(System.in);
 
     @Override
