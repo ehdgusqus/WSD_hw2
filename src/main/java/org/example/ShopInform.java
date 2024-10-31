@@ -17,10 +17,14 @@ public class ShopInform {
         this.category = category;
     }
 
-    public ShopInform(int id, String name, String description, int price, int quantity, String category) {
-    }
-
     public ShopInform(int id, String name, String description, int price, int quantity, String category, String createDate) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.category = category;
+        this.createDate = createDate;
     }
 
     public int getId() {
@@ -84,11 +88,12 @@ public class ShopInform {
         return "id=" + id +
                 " [" +
                 "name=" + name +
-                ", description='" + description  + '\'' +
+                ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity_level=" + quantity +
-                ", category='" + category + '\'' +
-                ", createDate=" + createDate + '\'' +
+                ", category=" + category +
+                ", createDate=" + createDate +
                 ']';
     }
+
 }
