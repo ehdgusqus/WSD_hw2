@@ -13,7 +13,7 @@ public class ShopCRUD implements ICRUD {
     }
 
     @Override
-    public void modify(ArrayList<ShopInform> shopList, int id) {
+    public ShopInform modify(ArrayList<ShopInform> shopList, int id) {
         System.out.println("Modify Shop");
         ShopInform item = findById(shopList, id);
         if (item != null) {
@@ -23,10 +23,11 @@ public class ShopCRUD implements ICRUD {
         } else {
             System.out.println("해당 아이디의 제품을 찾을 수 없습니다.");
         }
+        return item;
     }
 
     @Override
-    public void delete(ArrayList<ShopInform> shopList, int id) {
+    public boolean delete(ArrayList<ShopInform> shopList, int id) {
         ShopInform item = findById(shopList, id);
         if (item != null) {
             shopList.remove(item);
@@ -34,6 +35,7 @@ public class ShopCRUD implements ICRUD {
         } else {
             System.out.println("해당 아이디의 제품을 찾을 수 없습니다.");
         }
+        return false;
     }
 
     @Override
@@ -45,7 +47,7 @@ public class ShopCRUD implements ICRUD {
 
     @Override
     public void listPrice(ArrayList<ShopInform> shopList) {
-        // 가격 정렬된 리스트를 출력하는 로직
+        // 가격 별로 나눠서 출력
     }
 
     @Override
@@ -76,9 +78,6 @@ public class ShopCRUD implements ICRUD {
 
     // ShopInform 객체 생성 메서드
     private ShopInform printShop() {
-        System.out.print("ID: ");
-        int id = scanner.nextInt();
-
         System.out.print("상품명: ");
         String name = scanner.next();
 
@@ -88,12 +87,12 @@ public class ShopCRUD implements ICRUD {
         System.out.print("가격: ");
         int price = scanner.nextInt();
 
-        System.out.print("품질 (1:좋음 2:평범 3:나쁨): ");
+        System.out.print("품질 (1.나쁨 2.평범 3.좋음): ");
         int quantity = scanner.nextInt();
 
         System.out.print("카테고리: ");
         String category = scanner.next();
 
-        return new ShopInform(id, name, description, price, quantity, category);
+        return new ShopInform(name, description, price, quantity, category);
     }
 }
